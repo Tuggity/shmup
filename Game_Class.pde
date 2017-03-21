@@ -1,4 +1,4 @@
-//Main game loop, where you shoot the enemyships
+//Main game loop, where you shoot the enemy ships and jump to next lvl 
 
 class Game extends ScreenObject {
   GUI gui;
