@@ -1,3 +1,4 @@
+PImage life;
 class PowerUp extends Bullet {
   PowerUp(PVector origin, float setSpeed){
     size = new PVector(10,10);
@@ -45,7 +46,7 @@ class FullHP extends PowerUp{
   }
   
   void render(){
-   fill(0, 255, 0);
-   rect(getX(), getY(), getSize().x, getSize().y); 
+   life = loadImage("life.png");
+   image(life,getX(), getY());
   }
 }
