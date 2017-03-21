@@ -89,6 +89,8 @@ class Level2 extends Level{
     player1 = refPlayer1;
     shipObjects = refShipObjects;
     gameObjects = refGameObjects;
+    
+    minion = loadImage("Minion.png");
   }
 
   void update(float dt){
