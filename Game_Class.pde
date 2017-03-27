@@ -1,11 +1,13 @@
-//Main game loop, where you shoot the enemyships
+//Main game loop, where you shoot the enemy ships and jump to next lvl 
 
 class Game extends ScreenObject {
   GUI gui;
+  
   Level currentLevel;
   Ship player1;
 
   PImage playerSprite = loadImage("Player.png");
+  PImage minion = loadImage("Minion.png");
   
   
   ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
@@ -13,10 +15,14 @@ class Game extends ScreenObject {
   
   Game(){
     
-    player1 = new Player(player1Controller, new BasicPlayerWeapon(new PVector(), new PVector(0, 5)), playerSprite);
+    player1 = new Player(player1Controller, new BasicPlayerWeapon(new PVector(), new PVector(0, 5), new PVector()), playerSprite);
+    player1.getWeapon().setWeaponOffset(player1.getSize());
     playerSprite.resize(88,112);
-    Ship bar = new BasicEnemy(new BasicEnemyController(player1.getPos()), width-101, 0);
+    
+    gui = new GUI();
 
+    Ship bar = new BasicEnemy(new BasicEnemyController(player1.getPos()), width-101, 0, minion);
+    
     //gameObjects.add(foo);
     shipObjects.add(bar);
     currentLevel = new Level(player1, shipObjects, gameObjects);
@@ -77,8 +83,10 @@ class Game extends ScreenObject {
     }
   }
 
-  void render() {
-    background(255);
+  
+  void render(){
+    background(0);
+
     currentLevel.render();
     for (int i = gameObjects.size() - 1; i >= 0; i--) {
       GameObject obj = gameObjects.get(i);
@@ -90,5 +98,6 @@ class Game extends ScreenObject {
     }
 
     player1.render();
+    gui.render();
   }
 }

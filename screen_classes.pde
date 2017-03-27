@@ -151,6 +151,18 @@ class StartButton extends MenuDecorator{
 }
 
 class GUI extends ScreenObject{
+  PFont font;
+  
+  
+  
+  void render() {
+    pushMatrix();
+    fill(255);
+    font = createFont("LDFComicSansLight.ttf", 50);
+    textFont(font);
+    text("HP " + currentGame.player1.HP, 50, 100);
+    popMatrix();
+  }
 }
 
 class SplashScreen extends ScreenObject {
